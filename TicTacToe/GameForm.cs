@@ -62,10 +62,11 @@ namespace TicTacToe
             //if 2nd player is a computer
             if (_gameController.gameType == GameType.Single && !result.GameOver)
             {
-                //Delay
+                //Introduce a delay bewteen first player play and computer play for smooth user experience
                 Thread.Sleep(400);
 
-                result = _gameController.ExecuteComputerPlay();
+                //DO 2nd computer play
+                result = _gameController.DoComputerPlay();
 
                 if (result.LastPlayedPosition != null)
                 {

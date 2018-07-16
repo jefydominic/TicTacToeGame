@@ -100,13 +100,16 @@ namespace TicTacToe.Classes
         {
             GameResult gameRslt = new GameResult();
 
+            //Play
             _objGame.Play(playPos);
 
+            //Prepare play result
             gameRslt.LastPlayedPosition = playPos;
             gameRslt.GameBoard = _objGame.GameBoard;
             gameRslt.GameOver = _objGame.gameOver;
             gameRslt.Players = _objGame.Players;
 
+            //Check game over flag
             if (_objGame.gameOver)
             {
                 gameRslt.WhoWon = _objGame.wonPlayer;
@@ -116,18 +119,21 @@ namespace TicTacToe.Classes
             return gameRslt;
         }
         //Find execute computer play
-        public GameResult ExecuteComputerPlay()
+        public GameResult DoComputerPlay()
         {
             GameResult gameRslt = null;
             //At end if next player is computer type then execute next play too.
             if (_objGame.NextPlayer == PlayerNumber.SecondPlayer && _objGame.Players[1].Type == PlayerType.Computer && !_objGame.gameOver)//if 2nd player is a computer
             {
+                //Find our next best play
                 PlayPosition nextPlay = ((ComputerPlayer)_objGame.Players[1]).GetNextMove(_objGame.GameBoard);
 
+                //Play that move
                 gameRslt = this.UserPlay(nextPlay);
             }
             else
             {
+                //Otherwise just return current gameboard
                 gameRslt = new GameResult();
                 gameRslt.GameBoard = _objGame.GameBoard;
             }

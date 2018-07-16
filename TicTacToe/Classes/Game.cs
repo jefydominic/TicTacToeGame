@@ -130,24 +130,25 @@ namespace TicTacToe.Classes
 
             _lastTurn = _playTurn;
 
-            if (_playTurn == PlayerNumber.FirstPlayer)
+            if (_playTurn == PlayerNumber.FirstPlayer)//First Player turn
             {
                 _gameBoard.SetAt(playPos.X, playPos.Y, (char)PlayChars.First);
                 _playTurn = PlayerNumber.SecondPlayer;
             }
-            else if (_playTurn == PlayerNumber.SecondPlayer)
+            else if (_playTurn == PlayerNumber.SecondPlayer)//Second player turn
             {
                 _gameBoard.SetAt(playPos.X, playPos.Y, (char)PlayChars.Second);
                 _playTurn = PlayerNumber.FirstPlayer;
             }
 
+            //Check game is over only after 5 play moves.
             if(_nosMoves >= 5)
             {
                 if(_gameBoard.IsGameOver())
                     _gameOver = true;
             }
             
-
+            //If game is over then update WhoWon and score
             if(_nosMoves == 9 || _gameOver)
             {
                 _gameOver = true;

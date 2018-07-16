@@ -2,7 +2,7 @@
 
 namespace TicTacToe.Classes
 {
-    //This class represents normal player
+    //This class represents a normal player
     public class Player : IPlayer
     {
         //Constructor

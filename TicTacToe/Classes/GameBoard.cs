@@ -139,7 +139,7 @@ namespace TicTacToe.Classes
 
             PlayPosition[] freepos = new PlayPosition[9];
             int nosFree = 0;
-
+            //Find all empty play positions
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -192,12 +192,12 @@ namespace TicTacToe.Classes
         {
             PlayPosition posBest = null;
 
-            posBest = FindNextMove((char)PlayChars.Second);//Winning move
+            posBest = FindNextMove((char)PlayChars.Second);//Check any Winning move
 
             if (posBest != null)
                 return posBest;
 
-            posBest = FindNextMove((char)PlayChars.First);//Defend move
+            posBest = FindNextMove((char)PlayChars.First);//Check any defending move
 
             if (posBest != null)
                 return posBest;
@@ -229,7 +229,7 @@ namespace TicTacToe.Classes
                 if (_GameOver)
                     break;
 
-                //Check diagonal lines
+                //Check 2 diagonal lines
                 if ((_arrBoard[0][0].Value == _arrBoard[1][1].Value) && (_arrBoard[1][1].Value == _arrBoard[2][2].Value) && (_arrBoard[2][2].Value != ' '))// \
                 {
                     _GameOver = true;
@@ -250,6 +250,7 @@ namespace TicTacToe.Classes
                     _whoWon = _arrBoard[2][0].Value;
                     break;
                 }
+
                 //Check horizontal lines
                 for (int i = 0; i < 3; i++)
                 { 
